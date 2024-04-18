@@ -1,0 +1,33 @@
+primport pygame
+import sys
+
+# Inicializar Pygame
+pygame.init()
+
+# Definir dimensiones de la ventana
+width = 800
+height = 600
+
+# Crear la ventana
+window = pygame.display.set_mode((width, height))
+
+# Definir colores
+RED = (255, 0, 0)
+
+# Función para dibujar puntos rojos en las esquinas
+def draw_points():
+    pygame.draw.circle(window, RED, (0, 0), 5)  # Esquina superior izquierda
+    pygame.draw.circle(window, RED, (width, 0), 5)  # Esquina superior derecha
+    pygame.draw.circle(window, RED, (0, height), 5)  # Esquina inferior izquierda
+    pygame.draw.circle(window, RED, (width, height), 5)  # Esquina inferior derecha
+
+# Loop principal
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    window.fill((255, 255, 255))  # Llenar la ventana de blanco
+    draw_points()  # Dibujar puntos rojos en las esquinas
+    pygame.display.update()  # Actualizar la pantalla
